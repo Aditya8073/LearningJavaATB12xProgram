@@ -1,6 +1,6 @@
 # Java Basic Programs
 
-Welcome to the **Java Basic Programs** repository — a curated collection of foundational Java programs intended for learning, quick referencing, and validation. As a QA professional with 5 years of experience, I've structured this repository not only for developers but also with testers and automation engineers in mind, enabling smooth onboarding and code-level understanding for automation readiness.
+🚀 A comprehensive collection of Java basic programs covering all core Java concepts — variables, data types, operators, control structures, loops, arrays, strings, methods, object-oriented programming, exception handling, file I/O, collections framework, multithreading, and more — structured for beginners, students, and QA automation engineers.
 
 ---
 
