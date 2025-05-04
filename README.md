@@ -20,19 +20,12 @@ This repository aims to:
 - **Language**: Java 8+
 - **Build Tool**: javac / any Java IDE (e.g., IntelliJ IDEA, Eclipse)
 - **Version Control**: Git
-- **Test-Friendly**: Structured for easy JUnit/test integration (optional)
 
 ---
 
 
 🧩 Contribution Guidelines
-Ensure programs are simple and educational
+- Ensure programs are simple and educational
+- Follow Java naming and structural standards
+- Submit pull requests with clear commit messages
 
-Follow Java naming and structural standards
-
-Submit pull requests with clear commit messages
-
-Unit tests (if any) should follow the AAA (Arrange, Act, Assert) pattern
-
-📄 License
-This project is licensed under the MIT License.
