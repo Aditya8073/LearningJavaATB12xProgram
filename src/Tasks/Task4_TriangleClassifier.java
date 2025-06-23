@@ -15,7 +15,7 @@ public class Task4_TriangleClassifier {
         if(side1==side2 && side2==side3){
             System.out.println("It is an equilateral triangle");
         } else if (side1==side2 || side2==side3 || side3==side1) {
-            System.out.println("It is an  isosceles triangle");
+            System.out.println("It is an isosceles triangle");
         }
         else {
             System.out.println("It is a scalene triangle");
