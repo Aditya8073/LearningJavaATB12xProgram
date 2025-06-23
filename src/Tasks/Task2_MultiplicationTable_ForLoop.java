@@ -2,7 +2,7 @@ package Tasks;
 
 import java.util.Scanner;
 
-public class Task1_ForLoop {
+public class Task2_MultiplicationTable_ForLoop {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the number for which you want to print the table");

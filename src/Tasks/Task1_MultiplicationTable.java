@@ -1,6 +1,6 @@
 package Tasks;
 
-public class Task1 {
+public class Task1_MultiplicationTable {
     // Task #1
     //
     //Table of 5 you need to print,  (only use the printF)
