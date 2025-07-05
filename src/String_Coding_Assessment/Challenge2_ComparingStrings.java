@@ -1,4 +1,4 @@
-package StringCodingAssessment;
+package String_Coding_Assessment;
 
 public class Challenge2_ComparingStrings {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package StringCodingAssessment;
+package String_Coding_Assessment;
 
 public class Challenge1_BasicStringOperations {
     public static void main(String[] args) {
