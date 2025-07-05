@@ -1,6 +1,6 @@
 package StringCodingAssessment;
 
-public class BasicStringOperations_Challenge1 {
+public class Challenge1_BasicStringOperations {
     public static void main(String[] args) {
         String s= "Hello";
         s=s+" World";
