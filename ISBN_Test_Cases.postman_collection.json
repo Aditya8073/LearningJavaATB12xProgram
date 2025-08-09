@@ -1,0 +1,1099 @@
+{
+    "info": {
+        "name": "ISBN Validation Test Cases",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "TC_POS_01 - Valid ISBN-10 (digits only)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>0471958697</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_POS_02 - Valid ISBN-10 with \"X\"",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>156881111X</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_POS_03 - Valid ISBN-10 using JSON",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"0306406152\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_POS_04 - Valid ISBN-10 using SOAP 1.2",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/soap+xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>048665088X</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_POS_05 - Valid ISBN with leading zeros",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>0000000009</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_01 - Invalid checksum",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>0471958696</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_02 - Too few digits",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>1234567</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_03 - Too many digits",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>123456789012</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_04 - Alphabetic input",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>ABCDEFGHIJ</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_05 - Lowercase 'x' as checksum",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>156881111x</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_06 - Null input",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"null\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_07 - Empty string",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_08 - Special characters",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>@#*(!)$%^</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_09 - Whitespace-only input",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>        </sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_NEG_10 - Numbers with spaces",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>0471 958 697</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_EDGE_01 - Input with leading/trailing spaces",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN> 0471958697 </sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_EDGE_02 - JSON format with valid input",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"0306406152\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_EDGE_03 - Invalid content-type (text/plain)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/plain"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_EDGE_04 - Empty JSON body",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_EDGE_05 - No sISBN key in JSON",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"wrongKey\": 1}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_EDGE_06 - SOAP 1.2 with invalid checksum",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/soap+xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>1234567890</sISBN>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_HDR_01 - Missing Content-Type header",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_HDR_02 - Incorrect Content-Type",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/plain"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_HDR_03 - Additional custom headers",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "X-Debug",
+                        "value": "true"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_HDR_04 - Invalid charset in Content-Type",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json; charset=xyz"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_HDR_05 - Accept: application/xml",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "Header: Accept: application/xml"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_CK_01 - Valid session cookie",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Cookie",
+                        "value": "sessionid=abc123"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_CK_02 - Invalid cookie value",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    },
+                    {
+                        "key": "Cookie",
+                        "value": "sessionid=<script>bad</script>"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "Cookie: sessionid=<script>bad</script>"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_CK_03 - No cookies (default)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_FMT_01 - Malformed XML (unclosed tag)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<sISBN>0471958697</sISBN"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_FMT_02 - Malformed JSON",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"1234,}\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_FMT_03 - Empty body with content-length",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "Empty body with content-length set"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_FMT_04 - Full-width Unicode characters",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"\\uff11\\uff12\\uff13\\uff14\\uff15\\uff16\\uff17\\uff18\\uff19\\uff38\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_TIMEOUT_01 - Extremely large input (~1MB)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"long string\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_TIMEOUT_02 - Client timeout (1ms)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "Normal input, forced short timeout"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_CACHE_01 - Repeat valid ISBN multiple times",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"0471958697 (loop 10x)\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_CACHE_02 - Rapid invalid ISBNs in succession",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"1234567890 (loop 10x)\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_METHOD_01 - Use GET instead of POST",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "N/A"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_METHOD_02 - Use PUT method",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"0471958697\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "TC_METHOD_03 - Use DELETE method",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"sISBN\": \"0471958697\"}"
+                },
+                "url": {
+                    "raw": "http://example.com/validateISBN",
+                    "protocol": "http",
+                    "host": [
+                        "example",
+                        "com"
+                    ],
+                    "path": [
+                        "validateISBN"
+                    ]
+                }
+            }
+        }
+    ]
+}

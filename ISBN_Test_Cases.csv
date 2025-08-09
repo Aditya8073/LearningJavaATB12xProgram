@@ -1,0 +1,41 @@
+Test Case ID,Category,Description,Method,Protocol,Content-Type,Input / Headers / Cookies,Expected Status,Expected Output
+TC_POS_01,Positive,Valid ISBN-10 (digits only),POST,SOAP 1.1,text/xml,sISBN: 0471958697,200,true
+TC_POS_02,Positive,"Valid ISBN-10 with ""X""",POST,SOAP 1.1,text/xml,sISBN: 156881111X,200,true
+TC_POS_03,Positive,Valid ISBN-10 using JSON,POST,JSON,application/json,sISBN: 0306406152,200,true
+TC_POS_04,Positive,Valid ISBN-10 using SOAP 1.2,POST,SOAP 1.2,application/soap+xml,sISBN: 048665088X,200,true
+TC_POS_05,Positive,Valid ISBN with leading zeros,POST,SOAP 1.1,text/xml,sISBN: 0000000009,200,true
+TC_NEG_01,Negative,Invalid checksum,POST,SOAP 1.1,text/xml,sISBN: 0471958696,200,false
+TC_NEG_02,Negative,Too few digits,POST,SOAP 1.1,text/xml,sISBN: 1234567,200,false
+TC_NEG_03,Negative,Too many digits,POST,SOAP 1.1,text/xml,sISBN: 123456789012,200,false
+TC_NEG_04,Negative,Alphabetic input,POST,SOAP 1.1,text/xml,sISBN: ABCDEFGHIJ,200,false
+TC_NEG_05,Negative,Lowercase 'x' as checksum,POST,SOAP 1.1,text/xml,sISBN: 156881111x,200,false
+TC_NEG_06,Negative,Null input,POST,JSON,application/json,sISBN: null,500,Error
+TC_NEG_07,Negative,Empty string,POST,JSON,application/json,"sISBN: """"",500,Error
+TC_NEG_08,Negative,Special characters,POST,SOAP 1.1,text/xml,sISBN: @#*(!)$%^,200,false
+TC_NEG_09,Negative,Whitespace-only input,POST,SOAP 1.1,text/xml,"sISBN: ""        """,200,false
+TC_NEG_10,Negative,Numbers with spaces,POST,SOAP 1.1,text/xml,"sISBN: ""0471 958 697""",200,false
+TC_EDGE_01,Edge,Input with leading/trailing spaces,POST,SOAP 1.1,text/xml,"sISBN: "" 0471958697 """,200,false (or trim)
+TC_EDGE_02,Edge,JSON format with valid input,POST,JSON,application/json,sISBN: 0306406152,200,true
+TC_EDGE_03,Edge,Invalid content-type (text/plain),POST,SOAP 1.1,text/plain,sISBN: 0471958697,415,Error
+TC_EDGE_04,Edge,Empty JSON body,POST,JSON,application/json,{},500,Error
+TC_EDGE_05,Edge,No sISBN key in JSON,POST,JSON,application/json,"{""wrongKey"": 1}",500,Error
+TC_EDGE_06,Edge,SOAP 1.2 with invalid checksum,POST,SOAP 1.2,application/soap+xml,sISBN: 1234567890,200,false
+TC_HDR_01,Header,Missing Content-Type header,POST,SOAP 1.1,(none),Header: (none),415,Error
+TC_HDR_02,Header,Incorrect Content-Type,POST,SOAP 1.1,text/plain,Raw XML,415,Error
+TC_HDR_03,Header,Additional custom headers,POST,JSON,application/json,Header: X-Debug: true,200,true/false
+TC_HDR_04,Header,Invalid charset in Content-Type,POST,JSON,application/json; charset=xyz,sISBN: 0471958697,415,Error
+TC_HDR_05,Header,Accept: application/xml,POST,SOAP 1.1,text/xml,Header: Accept: application/xml,200,XML
+TC_CK_01,Cookie,Valid session cookie,POST,JSON,application/json,Cookie: sessionid=abc123,200,true
+TC_CK_02,Cookie,Invalid cookie value,POST,SOAP 1.1,text/xml,Cookie: sessionid=<script>bad</script>,200,true/false
+TC_CK_03,Cookie,No cookies (default),POST,JSON,application/json,(no cookies),200,true/false
+TC_FMT_01,Format,Malformed XML (unclosed tag),POST,SOAP 1.1,text/xml,<sISBN>0471958697</sISBN,500,Error
+TC_FMT_02,Format,Malformed JSON,POST,JSON,application/json,"{sISBN: 1234,}",400/500,Error
+TC_FMT_03,Format,Empty body with content-length,POST,SOAP 1.1,text/xml,Empty body with content-length set,400/500,Error
+TC_FMT_04,Format,Full-width Unicode characters,POST,JSON,application/json,sISBN: １２３４５６７８９Ｘ,200,false
+TC_TIMEOUT_01,Performance,Extremely large input (~1MB),POST,JSON,application/json,sISBN: long string,500,Error / Timeout
+TC_TIMEOUT_02,Performance,Client timeout (1ms),POST,SOAP 1.1,text/xml,"Normal input, forced short timeout",Timeout/Error,N/A
+TC_CACHE_01,Repetition,Repeat valid ISBN multiple times,POST,JSON,application/json,sISBN: 0471958697 (loop 10x),200,true
+TC_CACHE_02,Repetition,Rapid invalid ISBNs in succession,POST,JSON,application/json,sISBN: 1234567890 (loop 10x),200,false
+TC_METHOD_01,Method,Use GET instead of POST,GET,SOAP 1.1,N/A,(no body),405,Method Not Allowed
+TC_METHOD_02,Method,Use PUT method,PUT,JSON,application/json,sISBN: 0471958697,405,Method Not Allowed
+TC_METHOD_03,Method,Use DELETE method,DELETE,JSON,application/json,sISBN: 0471958697,405,Method Not Allowed
